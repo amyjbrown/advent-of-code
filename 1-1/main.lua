@@ -8,12 +8,12 @@ local file = assert( io.open('input.txt', 'r')) -- open and assert file exists
 local numbers = {}
 
 -- read each lines number and store it
-for i, number in ipairs(file:lines("n")) do
-    numbers[i] = number
+for num in file:lines("n") do
+    table.insert(numbers, num)
 end
 
-for n in numbers do
-    for m in numbers do
+for _, n in ipairs(numbers) do
+    for _, m in ipairs(numbers) do
         if n + m == 2020 then
             print(n*m)
             return
