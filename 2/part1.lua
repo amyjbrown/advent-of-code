@@ -5,7 +5,7 @@
     The character `char` can only appear between `number` and `number` times, inclusive, in `string`
 ]]--
 -- equivalet to /\d+-\d+ \g: \g+/
-local pattern = "(%d+)%-(%d+) (%a): (%a+)\n"
+local pattern = "(%d+)%-(%d+) (%a): (%a+)"
 
 local file = assert(io.open'input.txt')
 
@@ -24,10 +24,11 @@ local function contains (str, char)
     return result
 end
 
-for low, high, char, str in string.gmatch(pattern) do
+for low, high, char, str in payload:gmatch(pattern) do
     local count = contains(str, char)
+    print(low, high, char, str, count)
     -- if count in range [low, high]
-    if count >= low and count <= high then
+    if count >= tonumber(low) and count <= tonumber(high) then
         valid_count = valid_count + 1
     end
 end
