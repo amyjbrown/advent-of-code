@@ -1,6 +1,7 @@
 --[[
+    1-2
     File that will read all of the input form `input.txt`,
-    and find the product of all numbers that sum to 2020
+    and find the product of 3 numbers that sum to 2020
 ]]
 
 local file = assert( io.open('input.txt', 'r')) -- open and assert file exists
@@ -14,9 +15,12 @@ end
 
 for _, n in ipairs(numbers) do
     for _, m in ipairs(numbers) do
-        if n + m == 2020 then
-            print(n*m)
-            return
+        for _, k in ipairs(numbers) do
+
+            if n + m + k == 2020 then
+                print(n * m *k)
+                return
+            end
         end
     end
 end
